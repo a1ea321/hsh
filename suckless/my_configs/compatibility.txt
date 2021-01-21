@@ -1,0 +1,6 @@
+The config files were working with these commits:
+
+dwm: commit 61bb8b2241d4db08bea4261c82e27cd9797099e7
+dmenu: commit 1a13d0465d1a6f4f74bc5b07b04c9bd542f20ba6
+st: commit 4ef0cbd8b9371f37f7d02ef37b5378b879e6b8bf
+slock: commit 35633d45672d14bd798c478c45d1a17064701aa9
