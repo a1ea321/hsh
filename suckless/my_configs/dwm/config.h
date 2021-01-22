@@ -40,7 +40,7 @@ static const Rule rules[] = {
 	{ "GVIM",       NULL,       NULL,       -1,           1,           -1 },
 	{ "Audacious",  NULL,       NULL,       1 << 3,       1,           -1 },
 	{ "Volume Control",NULL,    NULL,       1 << 3,       1,           -1 },
-	{ "Telegram",   NULL,       NULL,       1 << 6,       1,           -1 },
+	{ "Telegram",   NULL,       NULL,       1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
