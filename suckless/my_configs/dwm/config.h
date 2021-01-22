@@ -77,9 +77,8 @@ static const char* voldowncmd[]   = {"amixer","-D","pulse","sset","Master","5%-"
 static const char* voltogglecmd[] = {"amixer","-D","pulse","sset","Master","toggle",NULL};
 static const char* mictogglecmd[] = {"amixer","-D","pulse","sset","Capture","toggle",NULL};
 
-static const char* monoffcmd[]   = {"BRI","0",NULL};
-static const char* monbrightnessupcmd[]   = {"BRI","851",NULL};
-static const char* monbrightnessdowncmd[] = {"BRI","100",NULL};
+static const char* monbrightnessupcmd[]   = {"xbacklight","-inc","10",NULL};
+static const char* monbrightnessdowncmd[] = {"xbacklight","-dec","10",NULL};
 
 static const char* mycmdslaunchercmd[] = {"dmenu_launcher_cmd"};
 static const char* xrandrlaunchercmd[] = {"dmenu_launcher_screen_layout"};
@@ -96,7 +95,9 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,         XK_s,      spawn,         {.v = xrandrlaunchercmd } }, // s for screen Layout
     
 
-	{ 0,         XF86XK_Display,               spawn,          {.v = monoffcmd} },
+	// Fn+F7 on Lenovo T440s. Maybe I'll use later.
+	//	{ 0,         XF86XK_Display,               spawn,          {.v = monoffcmd} },
+
 	{ 0,         XF86XK_MonBrightnessDown,     spawn,          {.v = monbrightnessdowncmd} },
 	{ 0,         XF86XK_MonBrightnessUp,       spawn,          {.v = monbrightnessupcmd} },
 
