@@ -3,13 +3,12 @@
 
 [ "$(tty)" = "/dev/tty1" ] && startx
 
-DIR=~/.hsh/bashconf
-
-test -d $DIR && {
-	for script in `ls $DIR/*.sh`; do
-		source $script
-	done
-} || {
-	-echo 'SET DIR IN ~/.bashrc AND COMMENT THIS LINE'
-	return
-}
+for DIR in ~/.hsh{,_confidential}/bashconf; do
+	test -d $DIR && {
+		for script in `ls $DIR/*.sh`; do
+			source $script
+		done
+	} || {
+		echo "$DIR not found. Have you run the scripts in hsh/init?"
+	}
+done
