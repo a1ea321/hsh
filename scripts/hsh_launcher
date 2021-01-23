@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cat ~/.hsh{,_confidential}/launch_list |
+grep -ve '^ *#' -ve '^\s*$' |
+dmenu -l 50 -fn 'Mono:pixelsize=20' $@ |
+/bin/sh >>$HSH_TMPDIR/dmenu_launcher.stdout 2>>$HSH_TMPDIR/dmenu_launcher.stderr

@@ -1,0 +1,44 @@
+~/not_ok_to_lose/misc_useful/scripts/screenshot.sh # CAPS
+xclip -selection clipboard -target image/png -i /r/caps.png
+
+firefox
+firefox --private-window
+chromium-browser --incognito
+
+telegram-desktop
+killall telegram-desktop
+
+audacity
+pavucontrol
+pcmanfm
+arandr
+
+/usr/bin/ffplay /dev/video2
+sxiv /r/caps.png
+
+killall -s9 $AUDIO_PLAYER
+timeout 2h $AUDIO_PLAYER https://dnbradio.hardcoding.nl/dnbradio_main.mp3 # https://dnbradio.com/player
+timeout 2h $AUDIO_PLAYER http://streaming2.argentinetangoradio.com/2202_128.mp3
+timeout 2h $AUDIO_PLAYER https://streamer.radio.co/s2c3cc784b/listen # ESR electroswing radio
+timeout 2h $AUDIO_PLAYER https://gribalkon.radioca.st/stream # Gri Balkon Ankara
+
+xsetroot -solid black
+xsetroot -solid white
+xsetroot -solid red
+
+sleep 0.3; xset dpms force off
+
+xbacklight -set 0
+xbacklight -set 0.1
+xbacklight -set 30
+xbacklight -set 100
+
+redshift -ovr -l 49.4:9.0 -b 0.9 
+redshift -x
+
+libreoffice --calc
+libreoffice --writer
+
+firefox --private-window https://www.southpark.de/en/seasons/south-park
+
+xkbcomp ~/.hsh/xkb/lenovo_t440.xkb $DISPLAY
