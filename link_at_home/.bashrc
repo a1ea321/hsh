@@ -3,6 +3,7 @@
 
 [ "$(tty)" = "/dev/tty1" ] && startx
 
+[[ ! $PATH == *~/.hsh/scripts* ]] && export PATH="$PATH:~/.hsh/scripts" 
 export HSH_TMPDIR='/r'
 export AUDIO_PLAYER='vlc'
 
