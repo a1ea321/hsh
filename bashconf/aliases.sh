@@ -1,6 +1,6 @@
 c () { cd $1 && ls; }
 
-alias W='watch -n 0.5 -d'
+alias W='timeout 30m watch -n 0.5 -d'
 
 command -v xclip > /dev/null && {
 	alias ctrlc='xclip -in -selection clipboard'
