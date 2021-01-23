@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DIR="$HSH_TMPDIR/.caps"
+mkdir -p $DIR
+FILEPATH="$DIR/`date '+%Y%m%d_%H%M%S.png'`"
+
+# Wait for dmenu to get out of the way.
+sleep 0.3
+
+scrot --select $FILEPATH && {
+	sleep 0.5 
+	xclip -selection clipboard -target image/png -i $FILEPATH
+	ln --force --symbolic $FILEPATH $HSH_TMPDIR/caps.png
+}
