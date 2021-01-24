@@ -80,7 +80,7 @@ static const char* mictogglecmd[] = {"amixer","-D","pulse","sset","Capture","tog
 static const char* monbrightnessupcmd[]   = {"xbacklight","-inc","10",NULL};
 static const char* monbrightnessdowncmd[] = {"xbacklight","-dec","10",NULL};
 
-static const char* mycmdslaunchercmd[] = {"dmenu_launcher_cmd"};
+static const char* mycmdslaunchercmd[] = {"hsh_launcher", NULL};
 static const char* xrandrlaunchercmd[] = {"dmenu_launcher_screen_layout"};
 
 static Key keys[] = {

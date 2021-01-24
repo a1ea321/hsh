@@ -1,10 +1,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-[ "$(tty)" = "/dev/tty1" ] && startx
+PATH_SUFFIX="$HOME/.hsh/scripts"
+[[ ! $PATH == *"$PATH_SUFFIX"* ]] && export PATH="$PATH:$PATH_SUFFIX" 
 
-[[ ! $PATH == *~/.hsh/scripts* ]] && export PATH="$PATH:~/.hsh/scripts" 
 export HSH_TMPDIR='/r'
+
+[[ `tty` = /dev/tty1 ]] && startx
+
 export AUDIO_PLAYER='vlc'
 
 for DIR in ~/.hsh{,_confidential}/bashconf; do
