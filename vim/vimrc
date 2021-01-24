@@ -1,0 +1,252 @@
+" I had many keybindings of my own in my muscle memory and going to another
+" computer without my .vimrc was annoying. Starting out, I thought I could
+" instantly copy my .vimrc whereever I go, but it turns out, that is not so
+" convenient as it had seemed.
+" Another reason is that at the time I did not use the "Alt Gr" key as "Shift",
+" so : was harder to type.
+" Remapping also makes me forget about the (possibly cool) functionality that
+" key originally has.
+"
+" PRINCIPLE 1:
+" Do not override existing keybindings.
+" For example, "nnoremap ; :" would be against this principle.
+"
+" PRINCIPLE 2:
+" If another keybinding / keystroke sequence exists for an action, use that.
+" Don't make your own. Because you can use that muscle memory everywhere, even 
+" without you own .vimrc.
+" For example, "nnoremap <CR> :" would be against this principle.
+" I am not sure about principle 2 though.
+" But this guy seems to agree:
+" https://hackernoon.com/learning-vim-what-i-wish-i-knew-b5dca186bef7
+" (Under section 'Keep It Vanilla')
+
+"  " Pathogen asks for these three lines:
+"  execute pathogen#infect()
+"  syntax on
+"  filetype plugin indent on
+"  " TODO Why don't you use Vim's native loader? (In Vim 8)
+" https://stackshare.io/stackups/vim-pathogen-vs-vim-plug-vs-vundle
+
+" Autoload Vim configuration file on save.
+autocmd! BufWritePost .vimrc source %
+autocmd! BufWritePost vimrc source %
+" Without the "!" after "autocmd", vim appears to freeze on save.
+
+" Show number n before the nth line up/downwards from cursor.
+set relativenumber
+" Show line number before current line, instead of the 0 due to relativenumber.
+set number
+
+" Mark searched terms.
+set hlsearch
+" Shortcut to unmark search terms.
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" Mark search term as you type it in.
+set incsearch
+" A limitation of &incsearch is that it does not highlight all the occurences as
+" you type in. For that, there is a plugin. (No, it actually highlights all the
+" occurences. I've written this last sentence some time ago so I don't remember
+" why I claimed it does not work.)
+" Also, with incsearch, Vim jumps directly to the occurrence, which can be a
+" pain when doing a regular search. But the shorthand, `:set is!` is easy enough
+" to type.
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" These are against PRINCIPLE 2.
+
+" Shortcut to save current file
+"nnoremap <Space> :update<CR>
+" update might be better than write, as it only writes to disk when there is a
+" change.
+"nnoremap <Space><Space> :write<CR>
+" Still, write might be necessary, e.g. to trigger an inotify event.
+nnoremap <Space> :write<CR>
+
+" Increase size of horizontal split
+" TODO: If it's just vertical splits, behave as <C-w>< and <C-w>>.
+nnoremap + <C-w>+
+nnoremap - <C-w>-
+
+" Navigate between tabs.
+nnoremap <C-n> gt
+nnoremap <C-p> gT
+
+" TODO move to discarded
+" turns out, <Tab> is the same as <C-I>
+" Tab navigation
+"nnoremap <Tab> gt
+"nnoremap <S-Tab> gT
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Do not wrap long lines
+set nowrap
+
+" Toggles line wrapping
+nnoremap <F9> :set nowrap!<CR>
+
+" This one is responsible for the red line at the 79th column.
+set colorcolumn=80
+autocmd BufRead *.py set colorcolumn=79
+
+" Automatically jump to the next line when the line gets too long.
+" It also activates the 'gq' command.
+set textwidth=80
+autocmd BufRead *.py set textwidth=79
+autocmd BufRead *.csv set textwidth=0
+
+" Pressing enter moves the rest of the line to a new line, cursor included.
+nnoremap g<CR> i<CR><Esc>
+
+" Pressing space while in visual mode copies the selection to the clipboard.
+vnoremap <Space> :'<,'>w !xclip -sel clip -i<CR><CR>
+	       \ :echomsg "Selection copied to clipboard."<CR>
+" This obviously does not work if xclip is not installed.
+" Suit to your needs in that case.
+" Perhaps:
+" vnoremap <Space> :'<,'>w !xsel --clipboard<CR><CR>
+" Or, vim-gtk has a special register for the system clipboard. So if you have
+" vim-gtk installed, you can also use "+y.
+"
+" An even bigger problem is that this only copies entire lines.
+" But I have found that I almost always copy entire lines.
+
+" So I don't have to go "tab tab tab" after starting a new line in C, Python...
+set autoindent
+" Setting this, and only this, appears to convert tabs into whitespaces, if
+" the file already uses whitespaces instead of tabs.
+
+" Pasting in visual mode does not overwrite register ", so I can paste the
+" same thing several times.
+vnoremap p "_dp
+vnoremap P "_dP
+" This goes against principle 1.
+
+" Uses whitespaces instead of tab characters.
+set expandtab
+
+" Displays normal mode commands at the bottom right corner.
+set showcmd
+" Useful when you are doing something like "+yiw.
+
+" Maximize current window (when window is splitted).
+nnoremap <C-W><C-A> <C-W>_<C-W><Bar>
+" As far as I read from :help <CTRL-W>, <C-W><C-A> doesn't do anything.
+" But this still goes against principle 2, as it might make me forget <C-W>|
+" and <C-W>_.
+
+" TODO
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+" Copy indent from current line when starting a new line.
+set autoindent
+
+" TODO
+" nnoremap <F8> :RainbowParenthesesToggleAll<CR>
+nnoremap <F8> :set cursorline!<CR>:set cursorcolumn!<CR>
+
+" Insert date with F5. Inspired from Notepad.
+inoremap <F5> =system("echo -n `date '+\%Y/\%m/\%d \%H:\%M'`")<cr>
+" I didn't know you could insert system command output in insert mode using
+" Ctrl+R. Also... `date` gives a new line at the end of its output (like many
+" other commands) so `echo -n` was necessary. I am glad I had the opportunity to
+" use each of ` ' " exactly once.
+
+" TODO
+" This, along with some other non-frequently used mappings of my own, should
+" be in a pop-up menu.
+
+" I do these often enough. Yet having such mappings seems dumb. Time will show
+" if I really need them.
+noremap s' :s/'/"/g<Enter>
+noremap s" :s/"/'/g<Enter>
+
+noremap s, :s/,/;/g<Enter>
+noremap s; :s/;/,/g<Enter>
+
+noremap sij :s/\<i\>/j/g<Enter>
+noremap sji :s/\<j\>/i/g<Enter>
+noremap sxy :s/\<x\>/y/g<Enter>
+noremap syx :s/\<y\>/x/g<Enter>
+
+noremap src :s/row/col/g<Enter>
+noremap scr :s/col/row/g<Enter>
+
+colorscheme ron
+
+" I don't think Vim already has the symbol for the Turkish Lira, ₺. 
+" :help digraph sure does not have an entry for 8378 at the moment.
+digraph TL 8378
+
+" I like my splits rightbelow.
+set splitbelow
+set splitright
+
+" Would love to have something like this for perusing:
+" nnoremap <C-e> :set scrolloff=999<CR><C-e>:set scrolloff=0<CR>
+" nnoremap <C-y> :set scrolloff=999<CR><C-y>:set scrolloff=0<CR>
+
+autocmd! BufRead *.pl set filetype=prolog
+
+filetype plugin on
+
+set completeopt=menu,preview,noselect
+
+set wildmenu
+
+nnoremap <F10> set linebreak!<CR>:set wrap!<CR>:set textwidth=0<CR>
+
+" TODO
+" Find out why stuff like ci' works for quotes, but not for parentheses.
+" Implement a ci( if there is no good reason for it not to exist.
+
+" Wondering why I am using smartindent? Try typing the following program with
+" nosmarttab:
+"   int main () {
+"       int a;
+"       int b;
+"       }
+" The brace at the end does not fall back into its place without smartindent.
+set smartindent
+
+autocmd! FileType help set scrolloff=999
+
+" TODO Ctrl-^ feels like finger yoga. Why don't I use Ctrl-0 instead? Because
+" it doesn't register. Hmm... Prolly a terminal thing. Ctrl-8 works tho. Ctrl-6
+" is not so bad on second thought. Does the same exist to alternate between
+" tabs?
+
+
+
+" TODO Look into these:
+" let g:netrw_preview   = 1
+" let g:netrw_liststyle = 3
+" let g:netrw_winsize   = 30
+" Ideally, liststyle is a combination of 1 and 3. Tree view with date etc.
+" details.
+" Also, p previews and x opens with external app. E.g. mupdf for pdf files.
+
+
+" TODO maybe make it so that it activates after some keypress
+" Naah this should be in an exrc
+" nnoremap <Enter> :!tmux send-keys -t .1 Up Enter<CR><CR>
+
+" Note to self: Leader vs. chord dilemma? Ask yourself this: Am I going to use
+" the mapping several times in a row? If yes, then chord. If not, leader.
+" Example: Cycling between tabs is done several times in a row, so chord.
+" Opening a netrw tab is done once, so leader.
+
+" TODO automatically :copen after grepping.
+" augroup quickfix
+"     autocmd!
+"     autocmd QuickFixCmdPost [^l]* cwindow
+"     autocmd QuickFixCmdPost l* lwindow
+" augroup ENDaugroup quickfix
+
+
+" TODO make sure you understand what this does well
+set path+=./**
