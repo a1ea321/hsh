@@ -2,6 +2,8 @@ take_screenshot --select
 take_screenshot # FULLSCREEN
 xclip -selection clipboard -target image/png -i /r/caps.png
 
+select_screenlayout
+
 firefox
 firefox --private-window
 chromium-browser --incognito

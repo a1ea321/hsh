@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd $SCREEN_LAYOUTS_DIR
+
+SELECTED_LAYOUT="$(
+    list_available_screen_layouts |
+    dmenu -l 50 -fn 'Mono:pixelsize=20' $@ 
+)"
+
+echo $SELECTED_LAYOUT >> /r/selectedlayout
+ln --force --symbolic $SELECTED_LAYOUT last_used
+
+/bin/sh $SELECTED_LAYOUT >>$HSH_TMPDIR/select_screenlayout.stdout\
+                        2>>$HSH_TMPDIR/select_screenlayout.stderr
+
+sleep 1.5
+
+# command -v xinput && xinput map-to-output 'ELAN Touchscreen' eDP1

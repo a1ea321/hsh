@@ -7,9 +7,10 @@ PATH_SUFFIX="$HOME/.hsh/scripts"
 export HSH_TMPDIR='/r/.hshtmp'
 mkdir -p $HSH_TMPDIR
 
-[[ `tty` = /dev/tty1 ]] && startx
-
+export SCREEN_LAYOUTS_DIR="$HOME/.screenlayout" # arandr default
 export AUDIO_PLAYER='vlc'
+
+[[ `tty` = /dev/tty1 ]] && startx
 
 for DIR in ~/.hsh{,_confidential}/bashconf; do
 	test -d $DIR && {

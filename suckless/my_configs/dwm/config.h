@@ -81,7 +81,7 @@ static const char* monbrightnessupcmd[]   = {"xbacklight","-inc","10",NULL};
 static const char* monbrightnessdowncmd[] = {"xbacklight","-dec","10",NULL};
 
 static const char* mycmdslaunchercmd[] = {"hsh_launcher", NULL};
-static const char* xrandrlaunchercmd[] = {"dmenu_launcher_screen_layout"};
+static const char* xrandrlaunchercmd[] = {"select_screenlayout", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

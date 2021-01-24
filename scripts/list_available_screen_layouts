@@ -1,0 +1,54 @@
+#!/usr/bin/python3
+
+"""
+Shows which of the scripts in $SCREEN_LAYOUTS_DIR (e.g. ~/.screenlayout created
+by arandr) are applicable based on xrandr's output. The script files are assumed
+to have .sh extension.
+
+TODO (maybe): This script detects which monitors are connected, but not what
+resolutions they support. This becomes a problem if the user uses two different
+monitors on the same interface but with different resolution options. Then some
+of the scripts outputted won't be applicable. I expect an unimportant
+fail-silent in this scenario.
+
+Custom resolutions (that do not yet exist on xrandr's output) could also
+complicate the matters. One should perhaps add all custom resolutions when X
+starts to circumvent the problem.
+"""
+
+def monitors_needed_for(xrandr_cmd):
+    monitors_needed = set()
+    for part in xrandr_cmd.split('--output'):
+        part = part.strip()
+        if part == 'xrandr': continue
+        if part.split(' ')[-1] == '--off': continue
+        monitors_needed.add(part.strip().split(' ')[0])
+    return monitors_needed
+
+
+from subprocess import check_output
+
+monitors_connected = set()
+xrandr_output = check_output(['xrandr'])
+for line in str(xrandr_output).split('\\n'):
+    if ' connected ' in line:
+        monitors_connected.add(line.split(' ')[0])
+
+
+possible_configs = []
+
+from os import environ
+DIRECTORY = environ['SCREEN_LAYOUTS_DIR']
+
+from glob import glob
+for filepath in glob(DIRECTORY + '/*.sh'):
+    with open(filepath, 'r') as f:
+        for line in f.readlines():
+            if line.startswith('xrandr --output'):
+                monitors_needed = monitors_needed_for(line)
+                if monitors_needed.issubset(monitors_connected):
+                    possible_configs.append(filepath)
+
+
+for config_file in possible_configs:
+    print(config_file.split('/')[-1])
