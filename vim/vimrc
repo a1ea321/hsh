@@ -196,7 +196,11 @@ set splitright
 
 autocmd! BufRead *.pl set filetype=prolog
 
-filetype plugin on
+
+" For syntax highlighting (see https://stackoverflow.com/questions/19754849/ and
+" https://vi.stackexchange.com/a/10125)
+filetype plugin indent on
+syntax on
 
 set completeopt=menu,preview,noselect
 
