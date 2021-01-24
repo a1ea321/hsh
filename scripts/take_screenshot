@@ -1,14 +1,14 @@
 #!/bin/bash
 
+# Arguments given to this script go directly to scrot.
+
 DIR="$HSH_TMPDIR/.caps"
 mkdir -p $DIR
 FILEPATH="$DIR/`date '+%Y%m%d_%H%M%S.png'`"
 
-# Wait for dmenu to get out of the way.
-sleep 0.3
-
-scrot --select $FILEPATH && {
-	sleep 0.5 
+# Delay, so whatever executed this script has a chance to get out of the way.
+# In my case dmenu.
+scrot --delay 0.1 $@ $FILEPATH && {
 	xclip -selection clipboard -target image/png -i $FILEPATH
 	ln --force --symbolic $FILEPATH $HSH_TMPDIR/caps.png
 }

@@ -1,4 +1,5 @@
-~/not_ok_to_lose/misc_useful/scripts/screenshot.sh # CAPS
+take_screenshot --select
+take_screenshot # FULLSCREEN
 xclip -selection clipboard -target image/png -i /r/caps.png
 
 firefox
@@ -42,3 +43,5 @@ libreoffice --writer
 firefox --private-window https://www.southpark.de/en/seasons/south-park
 
 xkbcomp ~/.hsh/xkb/lenovo_t440.xkb $DISPLAY
+
+gvim -c 'set textwidth=0' ~/.hsh/launch_list
