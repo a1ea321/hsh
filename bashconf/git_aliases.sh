@@ -12,11 +12,13 @@ alias GCOH1='git checkout HEAD~1'
 alias GCOM='git checkout master'
 alias GD='git diff'
 function GD~ { git diff $1~ $1; }; # Show changes by a given commit.
+function GD~NO { git diff --name-only $1~ $1; }; # Show changes by a given commit.
 alias GDH1='git diff HEAD~1'
 alias GDNO='git diff --name-only'
 alias GF='git fetch'
 alias GL='git log -n3'
 alias GLO='git log --oneline'
+alias GM='git merge'
 alias GMV='git mv'
 alias GP='git pull'
 alias GPU='git push'
