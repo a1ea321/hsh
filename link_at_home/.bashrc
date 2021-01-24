@@ -4,7 +4,8 @@
 PATH_SUFFIX="$HOME/.hsh/scripts"
 [[ ! $PATH == *"$PATH_SUFFIX"* ]] && export PATH="$PATH:$PATH_SUFFIX" 
 
-export HSH_TMPDIR='/r'
+export HSH_TMPDIR='/r/.hshtmp'
+mkdir -p $HSH_TMPDIR
 
 [[ `tty` = /dev/tty1 ]] && startx
 
