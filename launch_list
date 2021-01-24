@@ -44,4 +44,4 @@ firefox --private-window https://www.southpark.de/en/seasons/south-park
 
 xkbcomp ~/.hsh/xkb/lenovo_t440.xkb $DISPLAY
 
-gvim -c 'set textwidth=0' ~/.hsh/launch_list
+gvim -c 'set textwidth=0' -p ~/.hsh/launch_list ~/.hsh_confidential/launch_list
