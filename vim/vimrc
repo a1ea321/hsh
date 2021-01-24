@@ -176,7 +176,11 @@ noremap syx :s/\<y\>/x/g<Enter>
 noremap src :s/row/col/g<Enter>
 noremap scr :s/col/row/g<Enter>
 
-colorscheme ron
+if has("gui_running")
+    colorscheme default
+else
+    colorscheme ron
+endif
 
 " I don't think Vim already has the symbol for the Turkish Lira, ₺. 
 " :help digraph sure does not have an entry for 8378 at the moment.
