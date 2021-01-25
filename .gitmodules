@@ -1,12 +1,15 @@
 [submodule "suckless/dwm"]
-	path = suckless/dwm
+	path = suckless/repos/dwm
 	url = https://git.suckless.org/dwm
 [submodule "suckless/dmenu"]
-	path = suckless/dmenu
+	path = suckless/repos/dmenu
 	url = https://git.suckless.org/dmenu
 [submodule "suckless/st"]
-	path = suckless/st
+	path = suckless/repos/st
 	url = https://git.suckless.org/st
 [submodule "suckless/slock"]
-	path = suckless/slock
+	path = suckless/repos/slock
 	url = https://git.suckless.org/slock
+[submodule "suckless/repos/slstatus"]
+	path = suckless/repos/slstatus
+	url = https://git.suckless.org/slstatus
