@@ -8,7 +8,7 @@ FILEPATH="$DIR/`date '+%Y%m%d_%H%M%S.png'`"
 
 # Delay, so whatever executed this script has a chance to get out of the way.
 # In my case dmenu.
-scrot --delay 0.1 $@ $FILEPATH && {
+scrot --delay 0.5 $@ $FILEPATH && {
 	xclip -selection clipboard -target image/png -i $FILEPATH
 	ln --force --symbolic $FILEPATH $HSH_TMPDIR/caps.png
 }
