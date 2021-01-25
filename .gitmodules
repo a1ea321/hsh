@@ -10,3 +10,6 @@
 [submodule "suckless/slock"]
 	path = suckless/repos/slock
 	url = https://git.suckless.org/slock
+[submodule "suckless/repos/slstatus"]
+	path = suckless/repos/slstatus
+	url = https://git.suckless.org/slstatus
