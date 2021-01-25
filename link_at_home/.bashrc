@@ -4,7 +4,7 @@
 PATH_SUFFIX="$HOME/.hsh/scripts"
 [[ ! $PATH == *"$PATH_SUFFIX"* ]] && export PATH="$PATH:$PATH_SUFFIX" 
 
-export HSH_TMPDIR='/r/.hshtmp'
+export HSH_TMPDIR='/r'
 mkdir -p $HSH_TMPDIR
 
 export SCREEN_LAYOUTS_DIR="$HOME/.screenlayout" # arandr default
