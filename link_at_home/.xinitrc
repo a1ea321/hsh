@@ -2,6 +2,8 @@
 
 xkbcomp ~/.hsh/xkb/lenovo_t440.xkb $DISPLAY
 
+slstatus &
+
 # If the last layout is not found (e.g. plugged monitor out then rebooted), this
 # shouldn't have an adverse effect. The only problem I see is, if the user turns
 # all monitors off, powers down, and then forgets that and comes into a desktop
