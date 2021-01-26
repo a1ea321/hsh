@@ -25,3 +25,8 @@ alias ipy='ipython --no-confirm-exit'
 alias bc='bc --quiet --mathlib' 
 
 alias view='vim -R'
+
+# https://xkcd.com/1168/
+alias untar='tar -xvf' # Not compressed
+alias untar.gz='tar -xvzf' # GZIP
+alias untar.bz2='tar -xvjf' # BZIP2
