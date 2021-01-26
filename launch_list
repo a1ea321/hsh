@@ -1,6 +1,6 @@
 take_screenshot --select
 take_screenshot # FULLSCREEN
-xclip -selection clipboard -target image/png -i /r/caps.png
+xclip -selection clipboard -target image/png -i $HSH_TMPDIR/caps.png
 
 select_screenlayout
 
@@ -16,8 +16,8 @@ pavucontrol
 pcmanfm
 arandr
 
-/usr/bin/ffplay /dev/video2
-sxiv /r/caps.png
+ffplay /dev/video0
+sxiv $HSH_TMPDIR/caps.png
 
 killall -s9 $AUDIO_PLAYER
 timeout 2h $AUDIO_PLAYER https://dnbradio.hardcoding.nl/dnbradio_main.mp3 # https://dnbradio.com/player
