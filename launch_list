@@ -6,18 +6,25 @@ select_screenlayout
 
 firefox
 firefox --private-window
-chromium-browser --incognito
+chromium --incognito
 
 telegram-desktop
 killall telegram-desktop
+
+signal-desktop
+killall signal-desktop
 
 audacity
 pavucontrol
 pcmanfm
 arandr
 
+ffplay /dev/video8
 ffplay /dev/video0
+ffplay /dev/video2
+killall -s9 ffplay
 sxiv $HSH_TMPDIR/caps.png
+sxiv -t $HSH_TMPDIR/.caps
 
 killall -s9 $AUDIO_PLAYER
 timeout 2h $AUDIO_PLAYER https://dnbradio.hardcoding.nl/dnbradio_main.mp3 # https://dnbradio.com/player
@@ -49,3 +56,5 @@ xkbcomp ~/.hsh/xkb/lenovo_t440.xkb $DISPLAY
 gvim -c 'set textwidth=0' -p ~/.hsh/launch_list ~/.hsh_confidential/launch_list
 
 touch $HSH_TMPDIR/endx # "Don't restart dwm." (see end of ~/.xinitrc).
+
+slock & sleep 0.5; while pgrep slock; do loginctl suspend; sleep 10; done
