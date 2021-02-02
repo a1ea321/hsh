@@ -72,10 +72,17 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 //static const char *tmuxcmd[]  = { "st", "tmux", NULL }; // TODO: Attach if existing
 
+/*
 static const char* volupcmd[]     = {"amixer","-D","pulse","sset","Master","5%+",NULL};
 static const char* voldowncmd[]   = {"amixer","-D","pulse","sset","Master","5%-",NULL};
 static const char* voltogglecmd[] = {"amixer","-D","pulse","sset","Master","toggle",NULL};
 static const char* mictogglecmd[] = {"amixer","-D","pulse","sset","Capture","toggle",NULL};
+*/
+
+static const char* volupcmd[]     = { "pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char* voldowncmd[]   = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char* voltogglecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char* mictogglecmd[] = { "pactl", "set-source-mute", "0", "toggle", NULL };
 
 static const char* monbrightnessupcmd[]   = {"xbacklight","-inc","10",NULL};
 static const char* monbrightnessdowncmd[] = {"xbacklight","-dec","10",NULL};
