@@ -1,5 +1,3 @@
-	{ cpu_perc, "CPU:%2s%%", NULL },
-    { separator, "┃", NULL },
     { wifi_perc, "Wifi:%3s%%", "wlp3s0"},
     { separator, "┃", NULL },
 	{ battery_perc, "Bats: %2s%% ", "BAT0"},

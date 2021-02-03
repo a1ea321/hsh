@@ -68,5 +68,10 @@ static const struct arg args[] = {
 
     #include "machine_specific.h"
 
+	{ separator, "┃", NULL },
+	{ ram_used, "RAM:%s", NULL },
+	{ separator, "┃", NULL },
+	{ cpu_perc, "CPU:%2s%%", NULL },
+	{ separator, "┃", NULL },
 	{ datetime, "%s", "%b %d %a W%V %T" },
 };
