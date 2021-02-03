@@ -58,3 +58,4 @@ gvim -c 'set textwidth=0' -p ~/.hsh/launch_list ~/.hsh_confidential/launch_list
 touch $HSH_TMPDIR/endx # "Don't restart dwm." (see end of ~/.xinitrc).
 
 slock & sleep 0.5; while pgrep slock; do loginctl suspend; sleep 10; done
+killall slstatus && slstatus
