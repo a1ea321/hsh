@@ -1,0 +1,8 @@
+    { temp, "%s", "/sys/class/thermal/thermal_zone0/temp"},
+    { temp, " %s", "/sys/class/thermal/thermal_zone1/temp"},
+    { separator, "┃", NULL },
+    { wifi_essid, "%s", "wlp13s0"},
+    { wifi_perc, ":%3s%%", "wlp13s0"},
+    { separator, "┃", NULL },
+	{ battery_perc, "Bat:%2s%%", "BAT0"},
+	{ battery_state, "%s", "BAT0"},
