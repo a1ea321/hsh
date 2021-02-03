@@ -26,7 +26,8 @@ SELECTED_SCRIPT="$(
             print $0" --dryrun"
             exit
         }' $SCRIPT |
-        /bin/sh >/dev/null 2>/dev/null &&
+        /bin/sh |&
+        grep --quiet -e 'cannot find' -e 'not found' ||
         echo $SCRIPT
     done | # At this point we have the list of possible options.
     dmenu -l 50 -fn 'Mono:pixelsize=20' $@ |
