@@ -35,12 +35,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",       NULL,       NULL,       1 << 6,       1,           -1 },
+	{ "Gimp",       NULL,       NULL,       1 << 5,       1,           -1 },
 	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "GVIM",       NULL,       NULL,       -1,           1,           -1 },
 	{ "Audacious",  NULL,       NULL,       1 << 3,       1,           -1 },
-	{ "Volume Control",NULL,    NULL,       1 << 3,       1,           -1 },
+	{ "Pavucontrol",NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Telegram",   NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "Signal",     NULL,       NULL,       1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
