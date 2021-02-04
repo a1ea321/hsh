@@ -16,3 +16,13 @@ bind -x '"\C-f":fg -'
 # forwards. With the The following line, CTRL+S can be used to search forwards.
 stty -ixon
 
+# When you hit tab while the command line is empty, you get a list of past
+# commands. Then you get to select one with fuzzy finder. When you press Enter,
+# it does not get executed straightaway so you have a chance to edit it.
+_history2fzf () {
+    history |
+    cut -f 2- -d ] |
+    awk '!x[$0]++' | # Remove duplicate lines without sorting
+    fzf --tac
+}
+complete -E -C _history2fzf
