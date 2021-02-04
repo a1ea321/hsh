@@ -14,7 +14,7 @@ export AUDIO_PLAYER='vlc'
 
 for DIR in ~/.hsh{,_confidential}/bashconf; do
 	test -d $DIR && {
-		for script in `ls $DIR/*.sh`; do
+		for script in `ls $DIR/*.sh 2> /dev/null`; do
 			source $script
 		done
 	} || {
