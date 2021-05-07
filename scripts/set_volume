@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Take the sink with highest number. My usage for now has 2 states: With BT,
+# without BT. This is enough.
+SINK="$(
+    pactl list sinks |
+    grep '^Sink' |
+    tail -n1 |
+    cut -f 2 -d '#'
+)" 
+
+case "$1" in
+    "mute")
+        pactl set-sink-mute $SINK 1
+        ;;
+    "unmute")
+        pactl set-sink-mute $SINK 0
+        ;;
+    "toggle")
+        pactl set-sink-mute $SINK toggle
+        ;;
+    "increase")
+        pactl set-sink-volume $SINK +5%
+        ;;
+    "decrease")
+        pactl set-sink-volume $SINK -5%
+        ;;
+    *)
+        echo Possible options: mute unmute toggle increase decrease
+        ;;
+esac

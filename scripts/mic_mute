@@ -1,0 +1,24 @@
+#!/bin/bash
+
+case "$1" in
+    "mute")
+        COMMAND=1
+        ;;
+    "unmute")
+        COMMAND=0
+        ;;
+    "toggle")
+        COMMAND=toggle
+        ;;
+    *)
+        echo Possible options: mute unmute toggle
+        exit 1
+        ;;
+esac
+
+pactl list sources |
+grep '^Source' |
+cut -f 2 -d '#' |
+while read -r SOURCE; do
+    pactl set-source-mute $SOURCE $COMMAND
+done
