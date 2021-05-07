@@ -26,7 +26,17 @@ alias bc='bc --quiet --mathlib'
 
 alias view='vim -R'
 
-# https://xkcd.com/1168/
-alias untar='tar -xvf' # Not compressed
-alias untar.gz='tar -xvzf' # GZIP
+########### https://xkcd.com/1168/ ###########
+
+# Not compressed
+alias untar='tar -xvf'
+
+# GZIP
+alias tar.gz='tar -czvf NAME_OF_ARCHIVE.tar.gz /path/to/directory-or-file'
+alias untar.gz='tar -xvzf'
+
+# BZIP2 – compresses better than GZIP but slower
+alias tar.bz2='tar -cjvf NAME_OF_ARCHIVE.tar.bz2 /path/to/directory-or-file'
 alias untar.bz2='tar -xvjf' # BZIP2
+
+##############################################
