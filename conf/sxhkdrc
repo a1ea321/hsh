@@ -1,0 +1,42 @@
+F25
+ pactl set-source-mute `pactl list sources | grep -A2 '^Source' | grep -B2 USB | head -n1 | cut -f2 -d'#'` toggle
+F26
+ pactl set-source-mute `pactl list sources | grep -A2 '^Source' | grep -B2 USB | head -n1 | cut -f2 -d'#'` 1 # mic off
+F27
+ pactl set-source-mute `pactl list sources | grep -A2 '^Source' | grep -B2 USB | head -n1 | cut -f2 -d'#'` 0 # mic on
+F28
+ xdotool mousemove 3780  $(( $RANDOM % 1050 ))
+F29
+ echo A_OFF > /r/sdfbtfifo
+F30
+ echo B_ON > /r/sdfbtfifo
+F31
+ echo B_OFF > /r/sdfbtfifo
+XF86WakeUp
+ xdotool mousemove 300 300; sleep 0.2; xdotool click 3
+# xdotool mousemove 300 300;
+# sleep 0.2;
+# xdotool click 3
+
+
+#bash /home/alp/skipad.sh
+
+XF86AudioRaiseVolume
+ set_volume increase
+XF86AudioLowerVolume
+ set_volume decrease
+XF86AudioMute
+ set_volume toggle
+
+XF86AudioMicMute
+ pactl set-source-mute `pactl list sources | grep -A2 '^Source' | grep -B2 USB | head -n1 | cut -f2 -d'#'` toggle
+
+XF86AudioPause
+ echo A_OFF > /r/sdfbtfifo
+XF86AudioPlay
+ echo A_ON > /r/sdfbtfifo
+
+XF86MonBrightnessUp
+ echo 851 > /sys/class/backlight/intel_backlight/brightness
+XF86MonBrightnessDown
+ echo 101 > /sys/class/backlight/intel_backlight/brightness

@@ -39,9 +39,11 @@ static const Rule rules[] = {
 	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "GVIM",       NULL,       NULL,       -1,           1,           -1 },
 	{ "Audacious",  NULL,       NULL,       1 << 3,       1,           -1 },
+	{ "vlc",        NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Pavucontrol",NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Telegram",   NULL,       NULL,       1 << 6,       0,           -1 },
 	{ "Signal",     NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "DWMFLOAT",   NULL,       NULL,       -1,           1,           -1 },
 };
 
 /* layout(s) */
@@ -85,8 +87,8 @@ static const char* voldowncmd[]   = { "pactl", "set-sink-volume", "0", "-5%", NU
 static const char* voltogglecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char* mictogglecmd[] = { "pactl", "set-source-mute", "0", "toggle", NULL };
 
-static const char* monbrightnessupcmd[]   = {"xbacklight","-inc","10",NULL};
-static const char* monbrightnessdowncmd[] = {"xbacklight","-dec","10",NULL};
+// static const char* monbrightnessupcmd[]   = {"xbacklight","-inc","10",NULL};
+// static const char* monbrightnessdowncmd[] = {"xbacklight","-dec","10",NULL};
 
 static const char* mycmdslaunchercmd[] = {"hsh_launcher", NULL};
 static const char* xrandrlaunchercmd[] = {"select_screenlayout", NULL};
@@ -106,13 +108,13 @@ static Key keys[] = {
 	// Fn+F7 on Lenovo T440s. Maybe I'll use later.
 	//	{ 0,         XF86XK_Display,               spawn,          {.v = monoffcmd} },
 
-	{ 0,         XF86XK_MonBrightnessDown,     spawn,          {.v = monbrightnessdowncmd} },
-	{ 0,         XF86XK_MonBrightnessUp,       spawn,          {.v = monbrightnessupcmd} },
+	// { 0,         XF86XK_MonBrightnessDown,     spawn,          {.v = monbrightnessdowncmd} },
+	// { 0,         XF86XK_MonBrightnessUp,       spawn,          {.v = monbrightnessupcmd} },
 
-	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = volupcmd } },
-	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = voldowncmd } },
-	{ 0,         XF86XK_AudioMute,             spawn,          {.v = voltogglecmd } },
-	{ 0,         XF86XK_AudioMicMute,          spawn,          {.v = mictogglecmd } },
+	// { 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = volupcmd } },
+	// { 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = voldowncmd } },
+	// { 0,         XF86XK_AudioMute,             spawn,          {.v = voltogglecmd } },
+	// { 0,         XF86XK_AudioMicMute,          spawn,          {.v = mictogglecmd } },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
