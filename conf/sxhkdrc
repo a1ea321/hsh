@@ -37,6 +37,6 @@ XF86AudioPlay
  echo A_ON > /r/sdfbtfifo
 
 XF86MonBrightnessUp
- echo 851 > /sys/class/backlight/intel_backlight/brightness
+ brightness +
 XF86MonBrightnessDown
- echo 101 > /sys/class/backlight/intel_backlight/brightness
+ brightness -

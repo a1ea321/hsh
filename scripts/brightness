@@ -1,0 +1,41 @@
+#!/usr/bin/python
+
+''' Increments/decrements monitor brightness within predefined values.
+
+There's also the `xbacklight` command. Unlike my Acer sth. laptop, `xbacklight` 
+does not work on Lenovo T440s. Hence this script.
+'''
+
+from sys import argv
+
+BRIGHTNESS_FILE = '/sys/class/backlight/intel_backlight/brightness'
+BRIGHTNESS_VALUES = sorted([1, 100, 350, 851])
+
+def fail():
+    print('Usage: brightness { + | - | get }')
+    exit(1)
+
+if len(argv) != 2:
+    fail()
+if argv[1] not in ['+', '-', 'get']:
+    fail()
+
+with open(BRIGHTNESS_FILE, 'r') as f:
+    current_brightness = int(f.readline().strip())
+
+if argv[1] == 'get':
+    print(current_brightness)
+elif argv[1] == '+':
+    for i in range(len(BRIGHTNESS_VALUES)-1):
+        if current_brightness in range(BRIGHTNESS_VALUES[i], BRIGHTNESS_VALUES[i+1]):
+            current_brightness = BRIGHTNESS_VALUES[i+1]
+            break
+elif argv[1] == '-':
+    for i in range(len(BRIGHTNESS_VALUES)-1):
+        if current_brightness in range(BRIGHTNESS_VALUES[i]+1, BRIGHTNESS_VALUES[i+1]+1):
+            current_brightness = BRIGHTNESS_VALUES[i]
+else:
+    fail()
+
+with open(BRIGHTNESS_FILE, 'w') as f:
+    f.write(str(current_brightness))
