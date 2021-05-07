@@ -19,7 +19,6 @@ pavucontrol
 pcmanfm
 arandr
 
-ffplay /dev/video8
 ffplay /dev/video0
 ffplay /dev/video2
 killall -s9 ffplay
@@ -52,6 +51,7 @@ libreoffice --writer
 firefox --private-window https://www.southpark.de/en/seasons/south-park
 
 xkbcomp ~/.hsh/xkb/lenovo_t440.xkb $DISPLAY
+xkbcomp ~/.hsh/xkb/rapoo_E9300M.xkb $DISPLAY
 
 gvim -c 'set textwidth=0' -p ~/.hsh/launch_list ~/.hsh_confidential/launch_list
 
