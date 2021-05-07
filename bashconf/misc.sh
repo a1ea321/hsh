@@ -22,6 +22,7 @@ stty -ixon
 _history2fzf () {
     history |
     cut -f 2- -d ] |
+    sed 's/ *$//; s/^ *//' |
     awk '!x[$0]++' | # Remove duplicate lines without sorting
     fzf --tac
 }
