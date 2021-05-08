@@ -1,5 +1,5 @@
-    { temp, "%s", "/sys/class/thermal/thermal_zone0/temp"},
-    { temp, " %s", "/sys/class/thermal/thermal_zone1/temp"},
+    { temp, "%s°C", "/sys/class/thermal/thermal_zone0/temp"},
+    { temp, " %s°C", "/sys/class/thermal/thermal_zone1/temp"},
     { separator, "┃", NULL },
     { wifi_essid, "%s", "wlp13s0"},
     { wifi_perc, ":%3s%%", "wlp13s0"},
