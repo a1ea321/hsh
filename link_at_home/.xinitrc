@@ -14,9 +14,7 @@ signal-desktop &
 # session with all monitors black.
 (
     sleep 2
-    xrandr --newmode `cvt 1680 1050 | grep Modeline | sed 's/Modeline //' `
-    xrandr --addmode DP-2-3 1680x1050_60.00
-    bash $HOME/.screenlayout/last_used
+    # bash $HOME/.screenlayout/last_used
 ) &
 
 until test -e $HSH_TMPDIR/endx; do 
