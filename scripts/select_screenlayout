@@ -20,6 +20,13 @@ cd $ARANDR_DIR # ~/.screenlayout by default
 # This will contain the full absolute path to the user selected script.
 SELECTED_SCRIPT="$(
     for SCRIPT in `ls $PATTERN`; do
+        # Scripts with names starting with '!' are taken into the candidate list
+        # automatically.
+        [[ $SCRIPT == \!* ]] && {
+            echo $SCRIPT
+            continue
+        } 
+
         # If --dryrun of the first xrandr command succeeds, script becomes a
         # candidate to be displayed in dmenu.
         awk '/^ *xrandr/{
