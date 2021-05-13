@@ -9,7 +9,7 @@ does not work on Lenovo T440s. Hence this script.
 from sys import argv
 
 BRIGHTNESS_FILE = '/sys/class/backlight/intel_backlight/brightness'
-BRIGHTNESS_VALUES = sorted([1, 100, 350, 851])
+BRIGHTNESS_VALUES = sorted([0, 1, 100, 350, 851])
 
 def fail():
     print('Usage: brightness { + | - | get }')
