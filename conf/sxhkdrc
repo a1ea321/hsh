@@ -13,13 +13,8 @@ F30
 F31
  echo B_OFF > /r/sdfbtfifo
 XF86WakeUp
- xdotool mousemove 300 300; sleep 0.2; xdotool click 3
-# xdotool mousemove 300 300;
-# sleep 0.2;
-# xdotool click 3
+ xdotool mousemove 1014 1795; sleep 0.2; xdotool click 1 # skipad
 
-
-#bash /home/alp/skipad.sh
 
 XF86AudioRaiseVolume
  set_volume increase
