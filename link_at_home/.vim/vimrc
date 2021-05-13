@@ -258,3 +258,15 @@ autocmd! FileType help set scrolloff=999
 
 " TODO make sure you understand what this does well
 set path+=./**
+
+
+" For junegunn's vim-easy-align plugin
+xmap ga <Plug>(EasyAlign)
+" ga normally shows information about the character under the cursor (ASCII,
+" octal, digraph etc.) but I've never used it in visual mode. So this mapping
+" does not really clash with PRINCIPLE 1.
+" Strange: xnoremap does not work here. It has to be xmap. But why?
+" https://github.com/junegunn/vim-easy-align#examples-using-predefined-rules
+" vipga|  : Align around 1st |
+" vipga*| : Align around all |
+" Commented out portions don't get aligned, at least in vimrc.
