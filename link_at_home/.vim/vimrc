@@ -206,7 +206,13 @@ set completeopt=menu,preview,noselect
 
 set wildmenu
 
-nnoremap <F10> set linebreak!<CR>:set wrap!<CR>:set textwidth=0<CR>
+function! EditWithoutColumnLimit (...)
+    set textwidth=0
+    set colorcolumn=0
+    set wrap
+    set linebreak
+endfunction
+nnoremap <F10> :call<Space>EditWithoutColumnLimit()
 
 " TODO
 " Find out why stuff like ci' works for quotes, but not for parentheses.
@@ -241,7 +247,7 @@ autocmd! FileType help set scrolloff=999
 
 " TODO maybe make it so that it activates after some keypress
 " Naah this should be in an exrc
-" nnoremap <Enter> :!tmux send-keys -t .1 Up Enter<CR><CR>
+nnoremap <Backspace> :w<CR>:!./vimrun<CR>
 
 " Note to self: Leader vs. chord dilemma? Ask yourself this: Am I going to use
 " the mapping several times in a row? If yes, then chord. If not, leader.
