@@ -22,6 +22,21 @@ Note that if everything works as intended, your bash history will go to
 `~/.hsh_confidential` contains the stuff that could not be in this repo due to
 privacy reasons but is in fact a part of `hsh`.
 
+Example contents:
+```
+/home/a1ea321/.hsh_confidential/
+├── bashconf
+│   └── servers.sh → Aliases to IP addresses of my servers
+├── launch_list → Commands I don't want to put into a public repo 
+└── link_at_home
+    ├── .eternal_bash_history
+    └── .ssh
+        ├── authorized_keys
+        ├── id_rsa
+        ├── id_rsa.pub
+        └── known_hosts
+```
+
 `~/.hsh` and `~/.hsh/confidential` have a similar structure. `~/.hsh/bashconf`
 contains bash "shorthands", as you can see in this repo; whereas
 `~/.hsh_confidential/bashconf` contains private shorthands, such as aliases for
